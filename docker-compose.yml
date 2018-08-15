@@ -33,6 +33,8 @@ services:
       dockerfile: springapp-dockerfile
     ports:
     - "8080:8080"
+#    必须映射端口，否则不能远程debug
+    - "8000:8000"
     networks:
     - net-spring-db
 #    volumes:
