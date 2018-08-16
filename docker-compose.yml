@@ -35,6 +35,7 @@ services:
     - "8080:8080"
 #    必须映射端口，否则不能远程debug
     - "8000:8000"
+#    restart: "always"
     networks:
     - net-spring-db
 #    volumes:
@@ -43,7 +44,10 @@ services:
     - mysqldbserver
 #    links:
 #    - mysqldbserver
-
+    command: ["./wait-for-it.sh", "mysqldbserver:3306", "--","java",
+              "-Djava.security.egd=file:/dev/./urandom",
+              "-agentlib:jdwp=transport=dt_socket,address=8000,suspend=n,server=y",
+              "-jar","/app.jar"]
 networks:
   net-spring-db:
     driver: bridge

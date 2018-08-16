@@ -20,8 +20,7 @@ import java.util.Optional;
 @EntityScan
 public class DockerfiledemoApplication {
 
-    /*TODO  解决启动顺序问题： springapp和mysql启动顺序问题，虽然用depends-on限制，但是mysql启动时间较长，
-   springapp启动完成后，mysql还没有启动完成，连接数据库就会失败，springapp启动出错*/
+    
     @Autowired
     StudentRepository studentRepository;
 
